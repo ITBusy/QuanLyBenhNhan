@@ -1180,8 +1180,6 @@ public class ManHinhChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
     int minimunsize = 0;
     private void jpnViewComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jpnViewComponentResized
-        Dimension d = getSize();
-        System.out.println(d.width);
         if (jpnView.getBounds().width != minimunsize) {
             minimunsize = jpnView.getWidth();
             if (Selection == 1) {
