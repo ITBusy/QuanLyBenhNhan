@@ -61,7 +61,7 @@ public class KhamBenhJPanel extends javax.swing.JPanel {
     void FillDataComboboxBenhNhan() {
         DefaultComboBoxModel model = (DefaultComboBoxModel) cbbTenBN.getModel();
         model.removeAllElements();
-        if (!bnsi.getAll().isEmpty()) {
+        if (!bnsi.getDSKhamBenh().isEmpty()) {
             bnsi.getDSKhamBenh().forEach(bn -> {
                 model.addElement(bn);
             });

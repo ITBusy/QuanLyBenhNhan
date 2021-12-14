@@ -14,4 +14,8 @@ public interface BenhNhanService {
     public List<Integer> getMaBN();
     
     public boolean isBHYT(Integer id);
+    
+    public List<BenhNhan> ListKhamBenhHN();
+    
+    public List<BenhNhan> ListNoKhamBenhHN();
 }

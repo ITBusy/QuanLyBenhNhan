@@ -187,7 +187,7 @@ public class PhieuXetNghiemJPanel extends javax.swing.JPanel {
         PhieuXetNghiem pt = new PhieuXetNghiem();
         XetNghiem k = (XetNghiem) cbbTenXN.getSelectedItem();
         BenhNhan bn = (BenhNhan) cbbTenBN.getSelectedItem();
-        if (!txtTenBacSy.getToolTipText().isEmpty() || txtTenBacSy.getToolTipText() != null) {
+        if (!txtTenBacSy.getToolTipText().isEmpty()) {
             pt.setSphieuXN(Integer.parseInt(txtTenBacSy.getToolTipText()));
         }
         pt.setNgayXN(XDate.toDate(txtNgayXN.getText(), "dd/MM/yyyy HH:mm:ss"));

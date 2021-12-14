@@ -72,4 +72,14 @@ public class BenhNhanServiceImp extends SystemService<BenhNhan, Integer> impleme
         return BenhNhanDAOImp.isBHYT(id);
     }
 
+    @Override
+    public List<BenhNhan> ListKhamBenhHN() {
+        return BenhNhanDAOImp.ListKhamBenhHN();
+    }
+
+    @Override
+    public List<BenhNhan> ListNoKhamBenhHN() {
+        return BenhNhanDAOImp.ListNoKhamBenhHN();
+    }
+
 }

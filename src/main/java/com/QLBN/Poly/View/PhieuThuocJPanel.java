@@ -67,8 +67,8 @@ public class PhieuThuocJPanel extends javax.swing.JPanel {
     void FillDataComboboxBenhNhan() {
         modelTenBN = (DefaultComboBoxModel) cbbTenBN.getModel();
         modelTenBN.removeAllElements();
-        if (!bnsi.getAll().isEmpty()) {
-            bnsi.getAll().forEach(bn -> {
+        if (!bnsi.ListKhamBenhHN().isEmpty()) {
+            bnsi.ListKhamBenhHN().forEach(bn -> {
                 modelTenBN.addElement(bn);
             });
             cbbTenBN.setSelectedIndex(0);

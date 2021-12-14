@@ -119,7 +119,7 @@ public class BenhNhanDAOImp extends SystemDAO<BenhNhan, Integer> implements Benh
                     + " OR maBN IN (SELECT dbo.BenhNhan.maBN FROM dbo.BenhNhan "
                     + " JOIN dbo.HoSoBenhAn "
                     + " ON HoSoBenhAn.MaBN = BenhNhan.maBN "
-                    + " WHERE RaVien < FORMAT(GETDATE(), 'yyyy-MM-dd'))";
+                    + " WHERE FORMAT(RaVien, 'yyyy-MM-dd') < FORMAT(GETDATE(), 'yyyy-MM-dd'))";
             rs = XJDBC.executeQuery(sql);
             while (rs.next()) {
                 list.add(new BenhNhan(rs.getInt("maBN"),
@@ -153,7 +153,7 @@ public class BenhNhanDAOImp extends SystemDAO<BenhNhan, Integer> implements Benh
                     + " JOIN dbo.HoSoBenhAn "
                     + " ON HoSoBenhAn.MaBN = BenhNhan.maBN "
                     + " WHERE dbo.BenhNhan.maBN IN (SELECT MaBN FROM dbo.HoSoBenhAn) "
-                    + " AND  RaVien < FORMAT(GETDATE(), 'yyyy-MM-dd'))"
+                    + " AND  FORMAT(RaVien, 'yyyy-MM-dd') < FORMAT(GETDATE(), 'yyyy-MM-dd'))"
                     + " OR maBN NOT IN (SELECT maBN FROM dbo.HoSoBenhAn)";
 //            String sql = "SELECT dbo.BenhNhan.* FROM dbo.BenhNhan "
 //                    + " WHERE (dbo.BenhNhan.maBN NOT IN (SELECT MaBN FROM dbo.HoSoBenhAn) "
@@ -271,5 +271,21 @@ public class BenhNhanDAOImp extends SystemDAO<BenhNhan, Integer> implements Benh
             Logger.getLogger(BenhNhanDAOImp.class.getName()).log(Level.SEVERE, null, ex);
         }
         return false;
+    }
+
+    @Override
+    public List<BenhNhan> ListKhamBenhHN() {
+        String sql = "SELECT dbo.BenhNhan.* FROM dbo.BenhNhan "
+                + " JOIN dbo.KhamBenh ON KhamBenh.maBenhNhan = BenhNhan.maBN "
+                + " WHERE ngayKham = FORMAT(GETDATE(), 'yyyy-MM-dd')";
+        return selectBySql(sql);
+    }
+
+    @Override
+    public List<BenhNhan> ListNoKhamBenhHN() {
+        String sql = "SELECT dbo.BenhNhan.* FROM dbo.BenhNhan "
+                + " WHERE maBN NOT IN (SELECT maBenhNhan FROM dbo.KhamBenh "
+                + " WHERE ngayKham = FORMAT(GETDATE(), 'yyyy-MM-dd'))";
+        return selectBySql(sql);
     }
 }
